@@ -65,7 +65,7 @@ def register(request):
             profile.user = user
 
             if 'picture' in request.FILES:
-                profile.picture = request.FILES['pictures']
+                profile.picture = request.FILES['picture']
             profile.save()
             registered = True
 
