@@ -62,7 +62,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-                os.path.join(BASE_DIR,'djangoherokuapp/templates/herokuapp')
+                os.path.join(BASE_DIR,'templates/herokuapp')
             ],
         'APP_DIRS': True,
         'OPTIONS': {
