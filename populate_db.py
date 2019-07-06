@@ -7,7 +7,7 @@ def add_cat(name):
     c = Category.objects.get_or_create(name=name)[0]
     return c
 
-def retardation():
+def presets_url():
     python_cat = add_cat('Blah')
     add_page(cat=python_cat, title="Ofﬁcial Python Tutorial", url="https://www.google.com")
     add_page(cat=python_cat, title="Learn Python in 10 Minutes", url="https://www.google.com")
@@ -28,8 +28,8 @@ def retardation():
 
 if __name__== '__main__':
     print("Starting helloApp population script")
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Helloworld.settings')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'djangoherokuapp.settings')
     import django
     django.setup()
-    from helloApp.models import Category, Page
-    retardation()
+    from herokuapp.models import Category, Page
+    presets_url()
