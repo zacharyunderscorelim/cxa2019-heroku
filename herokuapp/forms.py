@@ -16,7 +16,7 @@ class CategoryForm(forms.ModelForm):
 
 class PageForm(forms.ModelForm):
     title = forms.CharField(max_length=128, help_text="Please enter the specific food name.")
-    foodtype = forms.CharField(max_length=128, help_text="Please select the type of food.")
+    foodtype = forms.CharField(max_length=6, help_text="Please select the type of food.")
     views = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
     class Meta:
         # Provide an association between the ModelForm and a model
@@ -24,7 +24,8 @@ class PageForm(forms.ModelForm):
         # What ﬁelds do we want to include in our form?
         # This way we don't need every ﬁeld in the model present.
         # Some ﬁelds may allow NULL values, so we may not want to include them… # Here, we are hiding the foreign key.
-        fields = ('title', 'foodtype', 'views')
+        fields = ('title','views')
+        fields = ['food_type']
 
 class UserForm(forms.ModelForm):
     username = forms.CharField(help_text="Please enter a username.")
