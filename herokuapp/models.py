@@ -14,10 +14,17 @@ class UserProfile(models.Model):
     picture = models.ImageField(upload_to='proﬁle_images', blank=True)
     def __str__(self):
         return self.user.username
+FOOD_CHOICES = (
+    ('carbs','Carbohydrates),
+    ('meat', 'Meat'),
+    ('veg','Vegetables'),
+    ('dairy','Dairy'),
+    ('others','Others'),
+)
 class Page(models.Model):
     category = models.ForeignKey(Category, on_delete = models.PROTECT)
     title = models.CharField(max_length=128)
-    url = models.URLField()
+    foodtype = models.CharField(max_length=6, choices=FOOD_CHOICES, default='carbs')
     views = models.IntegerField(default=0)
     def __str__(self):
         return self.title
