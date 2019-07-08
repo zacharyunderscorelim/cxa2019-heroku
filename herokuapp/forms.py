@@ -25,7 +25,7 @@ class PageForm(forms.ModelForm):
         # This way we don't need every ﬁeld in the model present.
         # Some ﬁelds may allow NULL values, so we may not want to include them… # Here, we are hiding the foreign key.
         fields = ('title','views')
-        fields = ['food_type']
+        fields = ['foodtype']
 
 class UserForm(forms.ModelForm):
     username = forms.CharField(help_text="Please enter a username.")

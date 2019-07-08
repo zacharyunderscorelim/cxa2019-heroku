@@ -24,7 +24,7 @@ FOOD_CHOICES = (
 class Page(models.Model):
     category = models.ForeignKey(Category, on_delete = models.PROTECT)
     title = models.CharField(max_length=128)
-    food_type = models.CharField(max_length=6, choices=FOOD_CHOICES, default='carbs')
+    foodtype = models.CharField(max_length=6, choices=FOOD_CHOICES, default='carbs')
     views = models.IntegerField(default=0)
     def __str__(self):
         return self.title
