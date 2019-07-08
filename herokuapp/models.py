@@ -15,7 +15,7 @@ class UserProfile(models.Model):
     def __str__(self):
         return self.user.username
 FOOD_CHOICES = (
-    ('carbs','Carbohydrates),
+    ('carbs','Carbohydrates'),
     ('meat', 'Meat'),
     ('veg','Vegetables'),
     ('dairy','Dairy'),
