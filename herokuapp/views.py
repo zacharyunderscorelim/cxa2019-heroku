@@ -94,7 +94,7 @@ def add_page(request, category_name_foodtype):
             print(form.errors)
     else:
         form = PageForm()
-    return render(request, 'add_page.html', {'category_name_url': category_name_url, 'category_name': category_name, 'form': form})
+    return render(request, 'add_page.html', {'category_name_foodtype': category_name_foodtype, 'category_name': category_name, 'form': form})
 
 
 
