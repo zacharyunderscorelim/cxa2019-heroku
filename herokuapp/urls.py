@@ -12,7 +12,7 @@ urlpatterns = [
     path('login/', views.user_login, name='login'),
     path('restricted/', views.restricted, name='restricted'),
     path('logout/', views.user_logout, name='logout'),
-    path('category/<slug:category_name_foodtype>/add_page/', views.add_page, name='add_page'),
+    path('category/<slug:category_name_url>/add_page/', views.add_page, name='add_page'),
     path('about/', views.about, name='about'),
     path('about_fbsg/', views.about_fbsg, name='about_fbsg'),
 
