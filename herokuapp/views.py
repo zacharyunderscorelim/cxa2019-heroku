@@ -39,16 +39,16 @@ def index(request):
     category_list = Category.objects.order_by('name')[:5]
     context_dict = {'categories':category_list}
     for category in category_list:
-        category.foodtype = category.name.replace(' ', '_')
+        category.url = category.name.replace(' ', '_')
     return render(request, 'index.html', context_dict)
 
-def category(request, category_name_foodtype):
+def category(request, category_name_url):
     # Change underscores in the category name to spaces.
     # URLs don't handle spaces well, so we encode them as underscores.
     # We can then simply replace the underscores with spaces again to get the name.
-    category_name = category_name_foodtype.replace('_', ' ')
+    category_name = category_name_url.replace('_', ' ')
     # Create a context dictionary which we can pass to the template rendering engine. # We start by containing the name of the category passed by the user.
-    context_dict = {'category_name': category_name, 'category_name_foodtype': category_name_foodtype}
+    context_dict = {'category_name': category_name, 'category_name_url': category_name_url}
     try:
         # Can we ﬁnd a category with the given name?
         # If we can't, the .get() method raises a DoesNotExist exception.
@@ -75,7 +75,8 @@ def add_category(request):
         form = CategoryForm()
         return render(request, 'add_category.html', {'form': form})
 
-def add_page(request, category_name_foodtype):
+def add_page(request, category_name_url):
+    category_name = decode_url(category_name_url)
     if request.method == 'POST':
         form = PageForm(request.POST)
         if form.is_valid():
@@ -89,12 +90,12 @@ def add_page(request, category_name_foodtype):
     # With this, we can then save our new model instance.
             page.save()
     # Now that the page is saved, display the category instead.
-            return category(request, category_name_foodtype)
+            return category(request, category_name_url)
         else:
             print(form.errors)
     else:
         form = PageForm()
-    return render(request, 'add_page.html', {'category_name_foodtype': category_name_foodtype, 'category_name': category_name, 'form': form})
+    return render(request, 'add_page.html', {'category_name_url': category_name_url, 'category_name': category_name, 'form': form})
 
 
 
