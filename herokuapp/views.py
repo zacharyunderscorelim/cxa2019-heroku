@@ -48,7 +48,7 @@ def category(request, category_name_foodtype):
     # We can then simply replace the underscores with spaces again to get the name.
     category_name = category_name_foodtype.replace('_', ' ')
     # Create a context dictionary which we can pass to the template rendering engine. # We start by containing the name of the category passed by the user.
-    context_dict = {'category_name': category_name, 'category_name_foodtype': category_name_foodtype}
+    context_dict = {'category_name': category_name, 'category_name_foodt': category_name_foodtype}
     try:
         # Can we ﬁnd a category with the given name?
         # If we can't, the .get() method raises a DoesNotExist exception.
