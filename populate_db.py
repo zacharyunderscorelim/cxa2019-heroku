@@ -8,7 +8,7 @@ def add_cat(name):
     return c
 
 def presets_url():
-    python_cat = add_cat('Blah')
+    python_cat = add_cat('Blahssss')
     add_page(cat=python_cat, title="Ofﬁcial Python Tutorial", url="https://www.google.com")
     add_page(cat=python_cat, title="Learn Python in 10 Minutes", url="https://www.google.com")
 
@@ -16,7 +16,7 @@ def presets_url():
     add_page(cat=django_cat, title="Ofﬁcial Django Tutorial", url="https://www.google.com")
     add_page(cat=django_cat, title="Django Rocks", url="https://www.google.com")
 
-    frame_cat = add_cat("Baa")
+    frame_cat = add_cat("Baaghhs")
     add_page(cat=frame_cat, title="Bottle", url="https://www.google.com")
     add_page(cat=frame_cat, title="Flask", url="https://www.google.com")
 
