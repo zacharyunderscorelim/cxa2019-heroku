@@ -16,7 +16,7 @@ def presets_url():
     add_page(cat=django_cat, title="Ofﬁcial Django Tutorial", url="https://www.google.com")
     add_page(cat=django_cat, title="Django Rocks", url="https://www.google.com")
 
-    frame_cat = add_cat("Baa")
+    frame_cat = add_cat("Baaghhs")
     add_page(cat=frame_cat, title="Bottle", url="https://www.google.com")
     add_page(cat=frame_cat, title="Flask", url="https://www.google.com")
 
