@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from herokuapp.forms import CategoryForm
 from herokuapp.models import Category, Page, UserProfile
-from herokuapp.forms import UserForm, UserProfileForm, PageForm
+from herokuapp.forms import UserForm,  PageForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
@@ -36,7 +36,7 @@ def encode_url(url):
     return url.replace(' ', '_')
 
 def index(request):
-    category_list = Category.objects.order_by('name')[:5]
+    category_list = Category.objects.order_by('name')[:20]
     context_dict = {'categories':category_list}
     for category in category_list:
         category.url = category.name.replace(' ', '_')
@@ -63,6 +63,7 @@ def category(request, category_name_url):
 
     return render(request,'category.html', context_dict)
 
+@login_required
 def add_category(request):
     if request.method == 'POST':
         form = CategoryForm(request.POST)
@@ -75,6 +76,7 @@ def add_category(request):
         form = CategoryForm()
         return render(request, 'add_category.html', {'form': form})
 
+@login_required
 def add_page(request, category_name_url):
     category_name = decode_url(category_name_url)
     if request.method == 'POST':
@@ -104,26 +106,20 @@ def register(request):
     registered = False
     if request.method == 'POST':
         user_form = UserForm(data=request.POST)
-        profile_form = UserProfileForm(data=request.POST)
-        if user_form.is_valid() and profile_form.is_valid():
+        if user_form.is_valid():
             user = user_form.save()
             user.set_password(user.password)
             user.save()
-            profile = profile_form.save(commit=False)
-            profile.user = user
 
-            if 'picture' in request.FILES:
-                profile.picture = request.FILES['picture']
-            profile.save()
+
             registered = True
 
         else:
-            print(user_form.errors, profile_form.errors)
+            print(user_form.errors)
     else:
         user_form = UserForm()
-        profile_form = UserProfileForm()
     return render(request, 'register.html',
-    {'user_form': user_form, 'profile_form': profile_form, 'registered':registered})
+    {'user_form': user_form, 'registered':registered})
 
 def user_login(request):
     if request.method == 'POST':
