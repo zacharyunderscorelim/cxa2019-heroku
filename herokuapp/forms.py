@@ -11,18 +11,26 @@ FOOD_CHOICES = (
     ('others','Others'),
 )
 
+URGENCY = (
+    ('fuck', 'Ultra Urgent'),
+    ('shit', 'Urgent'),
+    ('norm', 'Normal'),
+    ('meh', 'Not too urgent'),
+)
+
 class CategoryForm(forms.ModelForm):
     name = forms.CharField(max_length=128, help_text="Please enter the type of food!")
 
     class Meta:
         model = Category
-        fields = "__all__"
+        fields = ('name',)
 
 
 class PageForm(forms.ModelForm):
     title = forms.CharField(max_length=128, help_text="Please enter the name of the food")
     url = forms.ChoiceField(choices=FOOD_CHOICES, help_text="Please select the type of food it is")
     views = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
+
 
 
 
@@ -42,11 +50,5 @@ class UserForm(forms.ModelForm):
         model = User
         fields = ('username', 'email', 'password')
 
-class UserProfileForm(forms.ModelForm):
-    website = forms.URLField(help_text="Please enter your website.", required=False)
-    picture = forms.ImageField(help_text="Select a proﬁle image to upload.",required=False)
-    class Meta:
-        model = UserProfile
-        fields = ('website', 'picture')
 
 
