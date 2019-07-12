@@ -145,13 +145,12 @@ LOGIN_URL = '/herokuapp/login/'
 
 
 
-import dj_database_url 
 
 
-def DATABASES(self):
-    db = dict(default=dj_database_url.config())
-    db['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
-    return db
+import dj_database_url
+DATABASES['default'] = dj_database_url.config()
+DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
 
-GDAL_LIBRARY_PATH = env('GDAL_LIBRARY_PATH')
-GEOS_LIBRARY_PATH = env('GEOS_LIBRARY_PATH')
+GDAL_LIBRARY_PATH = os.environ.get('GDAL_LIBRARY_PATH')
+GEOS_LIBRARY_PATH = os.environ.get('GEOS_LIBRARY_PATH')
+
