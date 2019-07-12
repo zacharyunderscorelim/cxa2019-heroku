@@ -3,21 +3,19 @@ from herokuapp.models import Page, Category
 from herokuapp.models import UserProfile
 from django.contrib.auth.models import User
 
-FOOD_CHOICES = (
+FOOD_DEPOSITS = (
     ('carbs','Carbohydrates'),
     ('meat', 'Meat'),
     ('veg','Vegetables'),
     ('dairy','Dairy'),
     ('others','Others'),
 )
-
 URGENCY = (
-    ('fuck', 'Ultra Urgent'),
+    ('fuck', 'Extremely Urgent'),
     ('shit', 'Urgent'),
     ('norm', 'Normal'),
     ('meh', 'Not too urgent'),
 )
-
 class CategoryForm(forms.ModelForm):
     name = forms.CharField(max_length=128, help_text="Please enter the type of food!")
 
