@@ -6,6 +6,10 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.decorators import login_required
+from django.views import generic
+
+
+
 
 def about(request):
     # The context contains information such as the client's machine details, for
