@@ -30,7 +30,7 @@ SECRET_KEY = 'u!9gr3w5lyts-xed7*a$b1szv(dxxj!z^^380*ap_)&ao80fnz'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['herokudjangoapp12345.herokuapp.com']
+ALLOWED_HOSTS = ['herokudjangoapp12345.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'herokuapp',
     'storages',
+    'django.contrib.gis',
 ]
 
 MIDDLEWARE = [
@@ -146,3 +147,8 @@ import dj_database_url
 prod_db = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(prod_db)
 LOGIN_URL = '/herokuapp/login/'
+
+
+
+GDAL_LIBRARY_PATH = env('GDAL_LIBRARY_PATH')
+GEOS_LIBRARY_PATH = env('GEOS_LIBRARY_PATH')
