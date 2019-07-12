@@ -152,7 +152,7 @@ def user_login(request):
 
 @login_required
 def restricted(request):
-    return HttpResponse("Since you're in, you can see this text")
+    return HttpResponse("Read carefully, this is a restricted area, have you ever felt a 50 cal hit your face?")
 
 @login_required
 def user_logout(request):
