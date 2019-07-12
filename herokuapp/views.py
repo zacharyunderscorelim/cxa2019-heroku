@@ -87,10 +87,10 @@ def add_page(request, category_name_url):
     # Retrieve the associated Category object so we can add it.
             cat = Category.objects.get(name=category_name)
             page.category = cat
-    # Also, create a default value for the number of views.
             page.views = 0
-    # With this, we can then save our new model instance.
             page.save()
+    # With this, we can then save our new model instance.
+
     # Now that the page is saved, display the category instead.
             return category(request, category_name_url)
         else:

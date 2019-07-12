@@ -1,6 +1,6 @@
 import os
 
-def add_page(cat, title, url, views=0):
+def add_page(cat, title, url, views):
     p = Page.objects.get_or_create(category=cat, title=title, url=url, views=views)[0]
     return p
 def add_cat(name):
@@ -8,7 +8,7 @@ def add_cat(name):
     return c
 
 def presets_url():
-    python_cat = add_cat('Blahssss')
+    python_cat = add_cat('Blah')
     add_page(cat=python_cat, title="Ofﬁcial Python Tutorial", url="https://www.google.com")
     add_page(cat=python_cat, title="Learn Python in 10 Minutes", url="https://www.google.com")
 
@@ -16,7 +16,7 @@ def presets_url():
     add_page(cat=django_cat, title="Ofﬁcial Django Tutorial", url="https://www.google.com")
     add_page(cat=django_cat, title="Django Rocks", url="https://www.google.com")
 
-    frame_cat = add_cat("Baaghhs")
+    frame_cat = add_cat("Baa")
     add_page(cat=frame_cat, title="Bottle", url="https://www.google.com")
     add_page(cat=frame_cat, title="Flask", url="https://www.google.com")
 
