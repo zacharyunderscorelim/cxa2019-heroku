@@ -1,6 +1,4 @@
 from django.contrib import admin
-from django.contrib.gis.admin import OSMGeoAdmin
-from herokuapp.models import Shop
 
 
 # Register your models here.
@@ -10,6 +8,3 @@ admin.site.register(Page)
 admin.site.register(UserProfile)
 
 
-@admin.register(Shop)
-class ShopAdmin(OSMGeoAdmin):
-    list_display = ('name', 'location')

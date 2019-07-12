@@ -18,6 +18,13 @@ def about(request):
 
     return render(request, 'about.html')
 
+
+
+
+
+
+
+
 def about_fbsg(request):
     # The context contains information such as the client's machine details, for
     # Construct a dictionary to pass to the template engine as its context.
