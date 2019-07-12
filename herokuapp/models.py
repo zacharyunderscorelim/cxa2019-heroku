@@ -1,7 +1,14 @@
-from django.db import models
 from django.contrib.auth.models import User
 # Create your models here.
 
+from django.contrib.gis.db import models
+
+
+class Shop(models.Model):
+    name = models.CharField(max_length=100)
+    location = models.PointField()
+    address = models.CharField(max_length=100)
+    city = models.CharField(max_length=50)
 
 # Create your models here.
 class Category(models.Model):

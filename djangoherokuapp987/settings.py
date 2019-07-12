@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "django.contrib.gis",
+
     'herokuapp',
 'storages',
 ]
@@ -144,5 +146,12 @@ LOGIN_URL = '/herokuapp/login/'
 
 
 import dj_database_url 
-prod_db  =  dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(prod_db)
+
+
+def DATABASES(self):
+    db = dict(default=dj_database_url.config())
+    db['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
+    return db
+
+GDAL_LIBRARY_PATH = env('GDAL_LIBRARY_PATH')
+GEOS_LIBRARY_PATH = env('GEOS_LIBRARY_PATH')
