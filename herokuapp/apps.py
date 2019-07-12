@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class HelloappConfig(AppConfig):
-    name = 'helloApp'
+class HerokuappConfig(AppConfig):
+    name = 'herokuapp'
