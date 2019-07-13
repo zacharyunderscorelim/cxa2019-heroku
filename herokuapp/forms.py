@@ -1,7 +1,7 @@
-from django import forms
-from herokuapp.models import Page, Category
+from herokuapp.models import Page, Category, Shop
 from herokuapp.models import UserProfile
 from django.contrib.auth.models import User
+from django.contrib.gis import forms
 
 FOOD_CHOICES = (
     ('carbs', 'Carbohydrates'),
@@ -51,5 +51,15 @@ class UserForm(forms.ModelForm):
         model = User
         fields = ('username', 'email', 'password')
 
-
+class ShopForm(forms.ModelForm):
+    name = forms.CharField(max_length=100, help_text="Please enter your Company name")
+    location = forms.PointField(help_text="Please pin your company's location on the map")
+    address = forms.CharField(max_length=150, help_text="Please enter your company's address")
+    city = forms.CharField(max_length=50, help_text="Please input your City")
+    urge = forms.ChoiceField(choices=URGENCY, help_text="Please state how urgent the food is!")
+    
+    class Meta:
+        model = Shop
+        fields = ('name','location','address','city','urge')
+    
 

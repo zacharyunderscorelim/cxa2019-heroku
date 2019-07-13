@@ -15,5 +15,6 @@ urlpatterns = [
     path('category/<slug:category_name_url>/add_page/', views.add_page, name='add_page'),
     path('about/', views.about, name='about'),
     path('about_fbsg/', views.about_fbsg, name='about_fbsg'),
+    path('Shop/', views.Shop, name="Shop"),
 
 ]

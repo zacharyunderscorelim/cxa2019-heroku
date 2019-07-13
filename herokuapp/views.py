@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from herokuapp.forms import CategoryForm
-from herokuapp.models import Category, Page, UserProfile
-from herokuapp.forms import UserForm,  PageForm
+from herokuapp.models import Category, Page, UserProfile, Shop
+from herokuapp.forms import UserForm,  PageForm, ShopForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
@@ -88,6 +88,19 @@ def add_category(request):
         return render(request, 'add_category.html', {'form': form})
 
 @login_required
+def Shop(request):
+    if request.method == 'POST':
+        form = ShopForm(request.POST)
+        if form.is_valid():
+            form.save(commit=True)
+            return index(request)
+        else:
+            print(form.errors)
+    else:
+        form = ShopForm()
+        return render(request, 'Shop.html', {'form': form})
+
+@login_required
 def add_page(request, category_name_url):
     category_name = decode_url(category_name_url)
     if request.method == 'POST':
@@ -158,6 +171,7 @@ def restricted(request):
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect('/herokuapp/')
+
 
 
 

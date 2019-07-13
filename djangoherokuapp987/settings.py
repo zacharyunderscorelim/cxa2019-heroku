@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     "django.contrib.gis",
 
     'herokuapp',
-'storages',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -79,20 +79,21 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'djangoherokuapp987.wsgi.application'
 
+WSGI_APPLICATION = 'djangoherokuapp987.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'dbsqwerty123',
-        'USER': 'dbsqwerty123',
-        'PASSWORD': '',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': 'gis',
+        'USER': 'user001',
+        'PASSWORD': '123456789',
         'HOST': 'localhost',
-        'PORT': '',
+        'PORT': '5432'
+
     }
 }
 
@@ -140,12 +141,22 @@ AWS_STORAGE_BUCKET_NAME = 'dbsqwertyheroku12345'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 S3_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
 STATIC_URL = S3_URL
+AWS_SECRET_ACCESS_KEY = '67Sw0U+MTfaAJ7TTit2V4A60m5W9rFTz3glQJBNG'
+AWS_ACCESS_KEY_ID = 'AKIARI4ZYXEDPJ4PZGXA'
+
+
 
 
 LOGIN_URL = '/herokuapp/login/'
 
 
 #  Add configuration for static files storage using whitenoise
+import dj_database_url
+DATABASES['default'] = dj_database_url.config()
+DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
+
+GDAL_LIBRARY_PATH = env('GDAL_LIBRARY_PATH')
+GEOS_LIBRARY_PATH = env('GEOS_LIBRARY_PATH')
 
 
 
@@ -156,4 +167,3 @@ DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
 
 GDAL_LIBRARY_PATH = os.environ.get('GDAL_LIBRARY_PATH')
 GEOS_LIBRARY_PATH = os.environ.get('GEOS_LIBRARY_PATH')
-

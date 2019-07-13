@@ -12,7 +12,7 @@ def presets_url():
     add_page(cat=python_cat, title="Ofﬁcial Python Tutorial", url="https://www.google.com")
     add_page(cat=python_cat, title="Learn Python in 10 Minutes", url="https://www.google.com")
 
-    django_cat = add_cat("Blahs")
+    django_cat = add_cat("Blahdddds")
     add_page(cat=django_cat, title="Ofﬁcial Django Tutorial", url="https://www.google.com")
     add_page(cat=django_cat, title="Django Rocks", url="https://www.google.com")
 
