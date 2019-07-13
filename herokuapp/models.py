@@ -1,5 +1,4 @@
 from django.contrib.auth.models import User
-# Create your models here.
 
 from django.contrib.gis.db import models
 
@@ -10,21 +9,24 @@ class Shop(models.Model):
     address = models.CharField(max_length=100)
     city = models.CharField(max_length=50)
 
-# Create your models here.
-class Category(models.Model):
-    name = models.CharField(max_length=128, unique=True)
     def __str__(self):
         return self.name
 
+
+class Category(models.Model):
+    name = models.CharField(max_length=128, unique=True)
+
+    def __str__(self):
+        return self.name
+
+
 FOOD_CHOICES = (
-    ('carbs','Carbohydrates'),
+    ('carbs', 'Carbohydrates'),
     ('meat', 'Meat'),
-    ('veg','Vegetables'),
-    ('dairy','Dairy'),
-    ('others','Others'),
+    ('veg', 'Vegetables'),
+    ('dairy', 'Dairy'),
+    ('others', 'Others'),
 )
-
-
 
 
 class Page(models.Model):
@@ -39,7 +41,8 @@ class Page(models.Model):
 
 class UserProfile(models.Model):
     # This line is required. Links UserProﬁle to a User model instance.
-    user = models.OneToOneField(User,on_delete = models.PROTECT) # The additional attributes we wish to include.
+    user = models.OneToOneField(User, on_delete=models.PROTECT)
+
     def __str__(self):
         return self.user.username
 

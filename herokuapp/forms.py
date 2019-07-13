@@ -4,11 +4,11 @@ from herokuapp.models import UserProfile
 from django.contrib.auth.models import User
 
 FOOD_CHOICES = (
-    ('carbs','Carbohydrates'),
+    ('carbs', 'Carbohydrates'),
     ('meat', 'Meat'),
-    ('veg','Vegetables'),
-    ('dairy','Dairy'),
-    ('others','Others'),
+    ('veg', 'Vegetables'),
+    ('dairy', 'Dairy'),
+    ('others', 'Others'),
 )
 
 URGENCY = (
@@ -18,11 +18,12 @@ URGENCY = (
     ('meh', 'Not too urgent'),
 )
 
+
 class CategoryForm(forms.ModelForm):
     name = forms.CharField(max_length=128, help_text="Please enter the type of food!")
 
     class Meta:
-    # Provide an association between the ModelForm and a model
+        # Provide an association between the ModelForm and a model
         model = Category
         fields = ('name',)
 
@@ -32,9 +33,6 @@ class PageForm(forms.ModelForm):
     url = forms.ChoiceField(choices=FOOD_CHOICES, help_text="Please select the type of food it is")
     views = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
 
-
-
-
     class Meta:
         # Provide an association between the ModelForm and a model
         model = Page
@@ -43,10 +41,12 @@ class PageForm(forms.ModelForm):
         # Some ﬁelds may allow NULL values, so we may not want to include them… # Here, we are hiding the foreign key.
         fields = ('title', 'url', 'views')
 
+
 class UserForm(forms.ModelForm):
     username = forms.CharField(help_text="Please enter a username.")
     email = forms.CharField(help_text="Please enter your email.")
     password = forms.CharField(widget=forms.PasswordInput(), help_text="Please enter a password.")
+
     class Meta:
         model = User
         fields = ('username', 'email', 'password')
